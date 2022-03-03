@@ -1,0 +1,19 @@
+{
+  "name": "latex-fontawesome",
+  "version": "0.0.1",
+  "description": "Bindings for Font Awesome icons to be used in XeLaTeX.",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.nakim.be/nakim/latex-fontawesome"
+  },
+  "author": "Xavier MAWET",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-request": "^4.0.0"
+  }
+}
