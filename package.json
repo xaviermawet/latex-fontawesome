@@ -14,7 +14,7 @@
   "author": "Xavier MAWET",
   "license": "MIT",
   "dependencies": {
-    "graphql-request": "^4.0.0",
+    "graphql-request": "^4.1.0",
     "lodash-es": "^4.17.21"
   }
 }
