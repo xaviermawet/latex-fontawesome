@@ -32,21 +32,21 @@ function sanitizeId(id) {
 }
 
 function getIconsDefinitions(icons) {
-  let definitions = [];
+  const definitions = [];
 
-  for (const icon of icons) {
+  icons.forEach((icon) => {
     const sanitizedId = sanitizeId(icon.id);
     // loop over styles to add definition for all icon variants
     const styles = union(icon.membership.free, icon.membership.pro);
-    for (const style of styles) {
+    styles.forEach((style) => {
       const suffix = styles.length === 1 ? '' : styleParts[style].suffix;
-      const prefix = styleParts[style].prefix;
+      const { prefix } = styleParts[style];
       // icon definition in LaTeX
       const definition = `\\def\\fa${sanitizedId}${suffix}{{${prefix}\\symbol{"${icon.unicode.toUpperCase()}}}~}`;
       // Add to results
       definitions.push(definition);
-    }
-  }
+    });
+  });
 
   return definitions;
 }
@@ -65,6 +65,6 @@ export default async function buildSty(outputFile, icons) {
   await appendFile(
     outputFile,
     `
-\\endinput`
+\\endinput`,
   );
 }
