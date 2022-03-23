@@ -65,6 +65,6 @@ export default async function buildSty(outputFile, icons) {
   await appendFile(
     outputFile,
     `
-\\endinput`,
+\\endinput`
   );
 }
