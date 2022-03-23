@@ -16,5 +16,10 @@
   "dependencies": {
     "graphql-request": "^4.1.0",
     "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }
