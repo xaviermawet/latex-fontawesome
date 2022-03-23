@@ -1,6 +1,6 @@
-import { request, gql } from "graphql-request";
+import { request, gql } from 'graphql-request';
 
-const endpoint = "https://api.fontawesome.com";
+const endpoint = 'https://api.fontawesome.com';
 
 function getRelease(version, includePro) {
   const query = gql`
@@ -12,7 +12,7 @@ function getRelease(version, includePro) {
           unicode
           membership {
             free
-            ${includePro ? "pro" : ""}
+            ${includePro ? 'pro' : ''}
           }
         }
       }
