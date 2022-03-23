@@ -11,24 +11,6 @@ const styleParts = {
   brands: { suffix: 'B', prefix: '\\FAB' },
 };
 
-async function buildSty(outputFile, icons) {
-  const preambule = `\\NeedsTeXFormat{LaTeX2e}
-\\ProvidesPackage{${outputFile.replace(/\.[^/.]+$/, '')}}
-\\usepackage{fontspec}
-`;
-
-  await writeFile(outputFile, preambule);
-
-  const iconDefinitions = getIconsDefinitions(icons);
-  await appendFile(outputFile, iconDefinitions.join(os.EOL));
-
-  await appendFile(
-    outputFile,
-    `
-\\endinput`
-  );
-}
-
 function sanitizeId(id) {
   // convert to PascalCase
   const result = upperFirst(camelCase(id))
@@ -69,4 +51,20 @@ function getIconsDefinitions(icons) {
   return definitions;
 }
 
-export { buildSty };
+export default async function buildSty(outputFile, icons) {
+  const preambule = `\\NeedsTeXFormat{LaTeX2e}
+\\ProvidesPackage{${outputFile.replace(/\.[^/.]+$/, '')}}
+\\usepackage{fontspec}
+`;
+
+  await writeFile(outputFile, preambule);
+
+  const iconDefinitions = getIconsDefinitions(icons);
+  await appendFile(outputFile, iconDefinitions.join(os.EOL));
+
+  await appendFile(
+    outputFile,
+    `
+\\endinput`
+  );
+}
