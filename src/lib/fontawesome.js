@@ -1,6 +1,6 @@
-import { request, gql } from "graphql-request";
+import { request, gql } from 'graphql-request';
 
-const endpoint = "https://api.fontawesome.com";
+const endpoint = 'https://api.fontawesome.com';
 
 function getRelease(version, includePro) {
   const query = gql`
@@ -12,7 +12,7 @@ function getRelease(version, includePro) {
           unicode
           membership {
             free
-            ${includePro ? "pro" : ""}
+            ${includePro ? 'pro' : ''}
           }
         }
       }
@@ -22,11 +22,9 @@ function getRelease(version, includePro) {
   return request(endpoint, query);
 }
 
-async function getIcons(version, includePro) {
+export default async function getIcons(version, includePro) {
   const data = await getRelease(version);
   return includePro
     ? data.release.icons
     : data.release.icons.filter((icon) => icon.membership.free.length > 0);
 }
-
-export { getIcons };
